@@ -1,0 +1,428 @@
+fileFormatVersion: 2
+guid: 8cfdb7c55e2d6b840a2cc7b4af0b0bf1
+timeCreated: 1516007243
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: bip01
+    100002: Bip01 HeadNub
+    100004: bip01 L Finger0
+    100006: bip01 L Finger01
+    100008: bip01 L Finger02
+    100010: bip01 L Finger0Nub
+    100012: bip01 L Finger1
+    100014: bip01 L Finger11
+    100016: bip01 L Finger12
+    100018: bip01 L Finger1Nub
+    100020: bip01 L Finger2
+    100022: bip01 L Finger21
+    100024: bip01 L Finger22
+    100026: bip01 L Finger2Nub
+    100028: bip01 L Finger3
+    100030: bip01 L Finger31
+    100032: bip01 L Finger32
+    100034: bip01 L Finger3Nub
+    100036: bip01 L Finger4
+    100038: bip01 L Finger41
+    100040: bip01 L Finger42
+    100042: bip01 L Finger4Nub
+    100044: Bip01 L Toe0Nub
+    100046: bip01 R Finger0
+    100048: bip01 R Finger01
+    100050: bip01 R Finger02
+    100052: bip01 R Finger0Nub
+    100054: bip01 R Finger1
+    100056: bip01 R Finger11
+    100058: bip01 R Finger12
+    100060: bip01 R Finger1Nub
+    100062: bip01 R Finger2
+    100064: bip01 R Finger21
+    100066: bip01 R Finger22
+    100068: bip01 R Finger2Nub
+    100070: bip01 R Finger3
+    100072: bip01 R Finger31
+    100074: bip01 R Finger32
+    100076: bip01 R Finger3Nub
+    100078: bip01 R Finger4
+    100080: bip01 R Finger41
+    100082: bip01 R Finger42
+    100084: bip01 R Finger4Nub
+    100086: Bip01 R Toe0Nub
+    100088: bip01_head
+    100090: bip01_l_calf
+    100092: bip01_l_clavicle
+    100094: bip01_l_foot
+    100096: bip01_l_forearm
+    100098: bip01_l_hand
+    100100: bip01_l_thigh
+    100102: bip01_l_toe0
+    100104: bip01_l_upperarm
+    100106: bip01_neck
+    100108: bip01_pelvis
+    100110: bip01_r_calf
+    100112: bip01_r_clavicle
+    100114: bip01_r_foot
+    100116: bip01_r_forearm
+    100118: bip01_r_hand
+    100120: bip01_r_thigh
+    100122: bip01_r_toe0
+    100124: bip01_r_upperarm
+    100126: bip01_spine
+    100128: bip01_spine1
+    100130: bip01_spine2
+    100132: default001
+    100134: foot_steps
+    100136: //RootNode
+    400000: bip01
+    400002: Bip01 HeadNub
+    400004: bip01 L Finger0
+    400006: bip01 L Finger01
+    400008: bip01 L Finger02
+    400010: bip01 L Finger0Nub
+    400012: bip01 L Finger1
+    400014: bip01 L Finger11
+    400016: bip01 L Finger12
+    400018: bip01 L Finger1Nub
+    400020: bip01 L Finger2
+    400022: bip01 L Finger21
+    400024: bip01 L Finger22
+    400026: bip01 L Finger2Nub
+    400028: bip01 L Finger3
+    400030: bip01 L Finger31
+    400032: bip01 L Finger32
+    400034: bip01 L Finger3Nub
+    400036: bip01 L Finger4
+    400038: bip01 L Finger41
+    400040: bip01 L Finger42
+    400042: bip01 L Finger4Nub
+    400044: Bip01 L Toe0Nub
+    400046: bip01 R Finger0
+    400048: bip01 R Finger01
+    400050: bip01 R Finger02
+    400052: bip01 R Finger0Nub
+    400054: bip01 R Finger1
+    400056: bip01 R Finger11
+    400058: bip01 R Finger12
+    400060: bip01 R Finger1Nub
+    400062: bip01 R Finger2
+    400064: bip01 R Finger21
+    400066: bip01 R Finger22
+    400068: bip01 R Finger2Nub
+    400070: bip01 R Finger3
+    400072: bip01 R Finger31
+    400074: bip01 R Finger32
+    400076: bip01 R Finger3Nub
+    400078: bip01 R Finger4
+    400080: bip01 R Finger41
+    400082: bip01 R Finger42
+    400084: bip01 R Finger4Nub
+    400086: Bip01 R Toe0Nub
+    400088: bip01_head
+    400090: bip01_l_calf
+    400092: bip01_l_clavicle
+    400094: bip01_l_foot
+    400096: bip01_l_forearm
+    400098: bip01_l_hand
+    400100: bip01_l_thigh
+    400102: bip01_l_toe0
+    400104: bip01_l_upperarm
+    400106: bip01_neck
+    400108: bip01_pelvis
+    400110: bip01_r_calf
+    400112: bip01_r_clavicle
+    400114: bip01_r_foot
+    400116: bip01_r_forearm
+    400118: bip01_r_hand
+    400120: bip01_r_thigh
+    400122: bip01_r_toe0
+    400124: bip01_r_upperarm
+    400126: bip01_spine
+    400128: bip01_spine1
+    400130: bip01_spine2
+    400132: default001
+    400134: foot_steps
+    400136: //RootNode
+    4300000: default001
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: default001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 229
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bip01
+        weight: 1
+      - path: bip01/bip01_pelvis
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_l_thigh
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_l_thigh/bip01_l_calf
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_l_thigh/bip01_l_calf/bip01_l_foot
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_l_thigh/bip01_l_calf/bip01_l_foot/bip01_l_toe0
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_l_thigh/bip01_l_calf/bip01_l_foot/bip01_l_toe0/Bip01
+          L Toe0Nub
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_r_thigh
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_r_thigh/bip01_r_calf
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_r_thigh/bip01_r_calf/bip01_r_foot
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_r_thigh/bip01_r_calf/bip01_r_foot/bip01_r_toe0
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_r_thigh/bip01_r_calf/bip01_r_foot/bip01_r_toe0/Bip01
+          R Toe0Nub
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_head
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_head/Bip01
+          HeadNub
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger0
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger0/bip01 L Finger01
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger0/bip01 L Finger01/bip01 L Finger02
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger0/bip01 L Finger01/bip01 L Finger02/bip01 L Finger0Nub
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger1
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger1/bip01 L Finger11
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger1/bip01 L Finger11/bip01 L Finger12
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger1/bip01 L Finger11/bip01 L Finger12/bip01 L Finger1Nub
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger2
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger2/bip01 L Finger21
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger2/bip01 L Finger21/bip01 L Finger22
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger2/bip01 L Finger21/bip01 L Finger22/bip01 L Finger2Nub
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger3
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger3/bip01 L Finger31
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger3/bip01 L Finger31/bip01 L Finger32
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger3/bip01 L Finger31/bip01 L Finger32/bip01 L Finger3Nub
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger4
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger4/bip01 L Finger41
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger4/bip01 L Finger41/bip01 L Finger42
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_l_clavicle/bip01_l_upperarm/bip01_l_forearm/bip01_l_hand/bip01
+          L Finger4/bip01 L Finger41/bip01 L Finger42/bip01 L Finger4Nub
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger0
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger0/bip01 R Finger01
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger0/bip01 R Finger01/bip01 R Finger02
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger0/bip01 R Finger01/bip01 R Finger02/bip01 R Finger0Nub
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger1
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger1/bip01 R Finger11
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger1/bip01 R Finger11/bip01 R Finger12
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger1/bip01 R Finger11/bip01 R Finger12/bip01 R Finger1Nub
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger2
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger2/bip01 R Finger21
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger2/bip01 R Finger21/bip01 R Finger22
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger2/bip01 R Finger21/bip01 R Finger22/bip01 R Finger2Nub
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger3
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger3/bip01 R Finger31
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger3/bip01 R Finger31/bip01 R Finger32
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger3/bip01 R Finger31/bip01 R Finger32/bip01 R Finger3Nub
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger4
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger4/bip01 R Finger41
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger4/bip01 R Finger41/bip01 R Finger42
+        weight: 1
+      - path: bip01/bip01_pelvis/bip01_spine/bip01_spine1/bip01_spine2/bip01_neck/bip01_r_clavicle/bip01_r_upperarm/bip01_r_forearm/bip01_r_hand/bip01
+          R Finger4/bip01 R Finger41/bip01 R Finger42/bip01 R Finger4Nub
+        weight: 1
+      - path: bip01/foot_steps
+        weight: 1
+      - path: default001
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

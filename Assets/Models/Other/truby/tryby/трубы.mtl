@@ -1,0 +1,11 @@
+newmtl standard
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd D:\HomeProjects\Модели\3DCoat\трубы\трубы_ind_tubes_color.jpg
+map_Ks D:\HomeProjects\Модели\3DCoat\трубы\трубы_ind_tubes_gloss.jpg
+map_bump D:\HomeProjects\Модели\3DCoat\трубы\трубы_ind_tubes_nmap.jpg
