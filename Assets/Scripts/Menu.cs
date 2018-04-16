@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 [System.Serializable]
 public class GroupClass
@@ -79,7 +80,8 @@ public enum MenuState
 	Load,
 	Sets,
 	Runtime,
-	Inventory
+	Inventory,
+	Dialog
 }
 [System.Serializable]
 public class Settings
@@ -119,8 +121,29 @@ public class Settings
 
 public class Menu : MonoBehaviour {
 
-	public MenuState menu_state = MenuState.Main;
+	public MenuState menu_state
+	{
+		get {
+			return stateGetter;
+		}
+		set {
+			stateGetter = value;
+			SetState ();
+		}
+	}
+	private MenuState stateGetter;
 	public GameObject[] states;
+
+	public static Menu menu
+	{
+		get {
+			if (!menuGetter) {
+				menuGetter = FindObjectOfType<Menu> ();
+			}
+			return menuGetter;
+		}
+	}
+	private static Menu menuGetter;
 
 	public bool runtime = false;
 
@@ -130,11 +153,6 @@ public class Menu : MonoBehaviour {
 		}
 		if (menu_state == MenuState.Load && !runtime) {
 			CheckLoads();
-		}
-		if (menu_state == MenuState.Inventory) {
-			Screen.SetResolution (1280, 800, true);
-		} else {
-			Screen.SetResolution ((int)startResolution.x, (int)startResolution.y, true);
 		}
 	}
 
@@ -156,6 +174,12 @@ public class Menu : MonoBehaviour {
 	public RectTransform settings_mask;
 	public RectTransform load_mask;
 	public RectTransform new_mask;
+
+	[Header("Rundime dialog")]
+	public Text actor;
+	public RectTransform dialogButtonsParent;
+	public ButtonScript dialogEnterButton;
+	public GameObject dialogScrollSys;
 
 	public ButtonScript pickItem;
 
@@ -217,12 +241,14 @@ public class Menu : MonoBehaviour {
 	}
 
 	private void Start () {
-		startResolution = new Vector2 (Screen.width, Screen.height);
 		GetFromSaved ();
 		if (runtime) {
 			if (Game.gt == Game.GameType.LoadedGame) {
 				ApplyGame(Game.buffer);
 			}
+			dialogEnterButton.toDo = new ButtonScript.ToDo (delegate() {
+				ToDialogWithNearest(true);
+			});
 		}
 	}
 	public string MemoryUsed () {
@@ -268,8 +294,19 @@ public class Menu : MonoBehaviour {
 		settings_mask.anchoredPosition = Vector3.up * (settings_mask.sizeDelta.y * settings_scroll.value + settings_pos);
 		load_mask.anchoredPosition = Vector3.up * (load_mask.sizeDelta.y * load_scroll.value + load_pos);
 		new_mask.anchoredPosition = Vector3.up * (new_mask.sizeDelta.y * new_scroll.value + new_pos);
+		if (runtime) {
+			dialogEnterButton.SetActive (ToDialogWithNearest(false));
+			if (currentDialogSystem != null && StalkerControl.player && StalkerControl.player.trans && currentDialogSystem.dialogCharacter) {
+				StalkerBehaviour with = currentDialogSystem.dialogCharacter;
+				StalkerControl.player.SafetyLookAt ((with.trans.position - StalkerControl.player.trans.position).normalized);
+				with.SafetyLookAt ((StalkerControl.player.trans.position - with.trans.position).normalized);
+			}
+		}
 		if (memory) {
 			memory.text = "Используется память : " + MemoryUsed();
+		}
+		if (menu_state == MenuState.Dialog) {
+			
 		}
 	}
 
@@ -296,27 +333,21 @@ public class Menu : MonoBehaviour {
 		touch_sens.value = c.touch_sens;
 		Settings.Apply ();
 	}
-	private Vector2 startResolution;
 
 	public void ToNewGame () {
 		menu_state = MenuState.New;
-		SetState ();
 	}
 	public void ToMain () {
 		menu_state = MenuState.Main;
-		SetState ();
 	}
 	public void ToLoadGame () {
 		menu_state = MenuState.Load;
-		SetState ();
 	}
 	public void ToInventory () {
 		menu_state = MenuState.Inventory;
-		SetState ();
 	}
 	public void ToSettings () {
 		menu_state = MenuState.Sets;
-		SetState ();
 	}
 	public void StartNewGame (int group_int) {
 		Game.gt = Game.GameType.NewGame;
@@ -332,7 +363,44 @@ public class Menu : MonoBehaviour {
 	}
 	public void ToRuntime () {
 		menu_state = MenuState.Runtime;
-		SetState ();
+	}
+
+	public DialogSystem currentDialogSystem;
+
+	public bool ToDialogWithNearest (bool enterToDialog) {
+		StalkerBehaviour nearest = null;
+		if (StalkerControl.player) {
+			IEnumerable<StalkerBehaviour> search = StalkerBehaviour.behaviours.Where ((StalkerBehaviour arg) => StalkerControl.player.IsNearStalker(arg) && arg != StalkerControl.player);
+			search = search.OrderBy ((StalkerBehaviour arg) => (transform.position - arg.trans.position).magnitude);
+			if (search.ToArray().Length > 0) {
+				nearest = search.ToArray () [0];
+				if (enterToDialog) {
+					ToDialog (nearest);
+				}
+			}
+		}
+		return nearest != null;
+	}
+
+	public void ToDialog (StalkerBehaviour with) {
+		if (with.to_save_data.dialog.Length > 0) {
+			bool hasData = true;
+			switch (with.to_save_data.dialog) {
+
+			case "Osobist3":
+				currentDialogSystem = DialogSystem.osobist3;
+				break;
+
+			default:
+				hasData = false;
+				break;
+			}
+
+			if (hasData) {
+				currentDialogSystem.StartDialog ();
+				currentDialogSystem.SetNodeCorner (currentDialogSystem.currentNode, dialogButtonsParent, actor, with, dialogScrollSys);
+			}
+		}
 	}
 	public void Quit () {
 		Application.Quit ();

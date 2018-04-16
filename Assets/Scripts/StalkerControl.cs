@@ -18,9 +18,11 @@ public class StalkerControl : StalkerBehaviour {
 		camera_euler = Vector3.right * to_save_data.euler_x;
 		TouchController.crouch = to_save_data.crouch;
 		player = this;
+		CameraDelegateData.onPreRender = delegate {
+			CameraMotor();
+		};
 	}
 	private void FixedUpdate () {
-		CameraMotor ();
 		StalkerFixedUpdate ();
 	}
 	private void Update () {
@@ -32,11 +34,7 @@ public class StalkerControl : StalkerBehaviour {
 			ToOrOutCrouch ();
 		}
 		lookWalkAngleDirection = cam_trans.forward;
-		if (Application.isEditor) {
-			Vector2 inp = TouchController.getMoveVector;
-			TouchController.move_input = inp;
-		}
-		Vector3 m = (Vector3)TouchController.move_input;
+		Vector3 m = (Vector3)InputData.joystick;
 		m = new Vector3 (m.x, 0, m.y);
 
 		walkQ = m.magnitude;
@@ -70,14 +68,9 @@ public class StalkerControl : StalkerBehaviour {
 		//Vector3 n = ray.GetPoint (dist);
 		Vector3 n = trans.position + Vector3.up * 1.6f + cam_trans.right * 0.5f;
 		cam_parent_trans.position = Vector3.Slerp (c, n, Time.deltaTime * 4);
-		Vector3 v = (Vector3)TouchController.camera_input;
-		if (Application.isEditor) {
-			if (Input.GetButton("Fire3")) {
-				v = new Vector3 (Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
-			}
-		}
+		Vector3 v = (Vector3)InputData.camera;
 		cam_trans.localPosition = -Vector3.forward * (dist - 0.1f);
-		camera_euler += v * Settings.current.touch_sens;
+		camera_euler += v * Settings.current.touch_sens / 10;
 		camera_euler.y = Mathf.Clamp (camera_euler.y, -85, 85);
 		Vector3 e = new Vector3(-camera_euler.y, camera_euler.x, 0);
 		cam_parent_trans.rotation = Quaternion.Slerp (cam_trans.rotation,

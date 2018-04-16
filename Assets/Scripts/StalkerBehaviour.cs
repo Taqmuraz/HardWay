@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.AI;
 
 [System.Serializable]
@@ -21,6 +22,8 @@ public class ToSaveData
 			z = v.z;
 		}
 	}
+
+	public string dialog = null;
 
 	public float euler_x = 0;
 	public bool player = false;
@@ -50,11 +53,15 @@ public class StalkerBehaviour : MonoBehaviour {
 	public Transform trans;
 	public Animator anims;
 
+	public static List<StalkerBehaviour> behaviours = new List<StalkerBehaviour> ();
+
 	[Header("For IK")]
 	public Transform leftLegVector;
 	public Transform rightLegVector;
 	public Transform leftFoot;
 	public Transform rightFoot;
+	[Header("For audio")]
+	public AudioSource audioBeh;
 
 	public MoveType type;
 
@@ -64,7 +71,12 @@ public class StalkerBehaviour : MonoBehaviour {
 
 	public float moveSpeed;
 
-	StalkerBehaviour attacking;
+	private StalkerBehaviour attacking
+	{
+		get {
+			return null;
+		}
+	}
 
 	//
 
@@ -97,10 +109,33 @@ public class StalkerBehaviour : MonoBehaviour {
 		Destroy (this);
 	}
 
+	public void PlaySound (AudioClip clip, float volume) {
+		if (!audioBeh) {
+			Transform head = anims.GetBoneTransform (HumanBodyBones.Head);
+			AudioSource s = head.GetComponent<AudioSource> ();
+			if (!s) {
+				audioBeh = head.gameObject.AddComponent<AudioSource> ();
+			} else {
+				audioBeh = s;
+			}
+		}
+		audioBeh.spatialBlend = 1;
+		audioBeh.volume = volume;
+		audioBeh.clip = clip;
+		audioBeh.Play ();
+	}
+
+
+	public void OnDestroy () {
+		behaviours.Remove (this);
+	}
+
 	public void StalkerStart () {
 		agent = GetComponent<NavMeshAgent> ();
 		trans = GetComponent<Transform> ();
 		anims = GetComponent<Animator> ();
+
+		behaviours.Add (this);
 
 		if (!anims) {
 			anims = GetComponentInChildren<Animator> ();
@@ -129,7 +164,7 @@ public class StalkerBehaviour : MonoBehaviour {
 	public bool inMove
 	{
 		get {
-			return TouchController.getMoveVector.magnitude > 0;
+			return agent.velocity.magnitude > 0.2f;
 		}
 	}
 
@@ -312,6 +347,11 @@ public class StalkerBehaviour : MonoBehaviour {
 		}
 	}
 	float rightWeightGetter = 0;
+
+	public bool IsNearStalker (StalkerBehaviour stalker)
+	{
+		return (stalker.trans.position - trans.position).magnitude < 2;
+	}
 
 	public void OnAnimatorIK (int layerIndex) {
 		float dir_l = (leftLegVector.position.y - leftFoot.position.y);

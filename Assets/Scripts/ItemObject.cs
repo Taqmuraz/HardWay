@@ -30,6 +30,8 @@ public class ItemObject : MonoBehaviour {
 	public Transform trans;
 	public GameObject button;
 
+	public static List<ItemObject> itemsAll = new List<ItemObject> ();
+
 	private bool IsNearStalker (StalkerBehaviour stalker)
 	{
 		return (stalker.trans.position - trans.position).magnitude < 2;
@@ -37,6 +39,11 @@ public class ItemObject : MonoBehaviour {
 
 	private void Start () {
 		trans = transform;
+		itemsAll.Add (this);
+	}
+
+	private void OnDestroy () {
+		itemsAll.Remove (this);
 	}
 
 	private void Update () {
@@ -44,7 +51,7 @@ public class ItemObject : MonoBehaviour {
 	}
 
 	public static ItemObject[] GetNearestAtPoint (Vector3 point, float dist) {
-		ItemObject[] objs = FindObjectsOfType<ItemObject> ();
+		ItemObject[] objs = itemsAll.ToArray ();
 		List<ItemObject> list = new List<ItemObject> ();
 		for (int i = 0; i < objs.Length; i++) {
 			float m = (objs [i].trans.position - point).magnitude;

@@ -415,11 +415,11 @@ public enum ArmorType
 	Foots
 }
 [System.Serializable]
-public class WeaponParameter
+public struct WeaponParameter
 {
-	public int patrontage = 1;
-	public float damage = 1;
-	public float conditionOnStrike = 0.001f;
+	public int patrontage;
+	public float damage;
+	public float conditionOnStrike;
 	public WeaponParameter (int p, float d, float c) {
 		this.patrontage = p;
 		this.damage = d;
@@ -464,10 +464,10 @@ public class GrenadeItem : Item
 	}
 }
 [System.Serializable]
-public class GrenadeParameter
+public struct GrenadeParameter
 {
-	public float damage = 0;
-	public float distance = 1f;
+	public float damage;
+	public float distance;
 
 	public GrenadeParameter (float d, float dist) {
 		this.damage = d;
@@ -475,11 +475,11 @@ public class GrenadeParameter
 	}
 }
 [System.Serializable]
-public class MeleeWeaponParameter
+public struct MeleeWeaponParameter
 {
-	public float damage = 0;
-	public float speed = 1;
-	public float distance = 1f;
+	public float damage;
+	public float speed;
+	public float distance;
 
 	public MeleeWeaponParameter (float d, float sp, float dist) {
 		this.speed = sp;
@@ -499,12 +499,12 @@ public class MeleeWeaponItem : Item
 	}
 }
 [System.Serializable]
-public class UsableParameter
+public struct UsableParameter
 {
-	public int healing = 0;
-	public int armoring = 0;
-	public int radiation = -1;
-	public int bloodLost = -1;
+	public int healing;
+	public int armoring;
+	public int radiation;
+	public int bloodLost;
 
 	public UsableParameter (int heal, int armor, int radio, int bloodL) {
 		this.armoring = armor;
@@ -514,10 +514,10 @@ public class UsableParameter
 	}
 }
 [System.Serializable]
-public class PatronesParameter
+public struct PatronesParameter
 {
-	public float damage = 0;
-	public int maxCount = 10;
+	public float damage;
+	public int maxCount;
 
 	public PatronesParameter (float d, int max) {
 		this.damage = d;
@@ -719,9 +719,12 @@ public class StalkerInventory : MonoBehaviour {
 			if (!inv.slots[i].equipped) {
 				GameObject sl = Instantiate (slot, slotsParent);
 				RectTransform r = sl.GetComponent<RectTransform> ();
-				r.anchoredPosition = (-Vector2.up * (eq / 6) + Vector2.right * (eq % 6)) * r.sizeDelta.y;
+				Vector2 pos = -Vector2.up * (eq / 6) + Vector2.right * (eq % 6);
+				r.anchoredPosition = new Vector2 (pos.x * slotsParent.rect.size.x / 6, pos.y * slotsParent.rect.size.y / 6);
 				r.GetComponent<RawImage> ().texture = inv.slots [i].texture;
-				float sd = r.sizeDelta.y;
+				float sd = r.rect.size.y;
+				r.SetSizeWithCurrentAnchors (RectTransform.Axis.Horizontal, slotsParent.rect.size.x / 6);
+				r.SetSizeWithCurrentAnchors (RectTransform.Axis.Vertical, slotsParent.rect.size.y / 6);
 				int index = i;
 				int showI = eq;
 				ButtonScript b = r.GetComponent<ButtonScript> ();

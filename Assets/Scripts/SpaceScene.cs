@@ -8,29 +8,28 @@ public class SpaceScene : MonoBehaviour {
 	public static int level = 0;
 	public Text loadProcentText;
 	public Image loadProcentImage;
-	public float timeToLoad = 5;
-
-	private float time_started = 0;
 	
 	public static void LoadLevel (int levelname) {
 		level = levelname;
 		LoadLevelNow (1);
 	}
 
+	public static AsyncOperation operation;
+
 	public static void LoadLevelNow (int l) {
 		AsyncOperation op = SceneManager.LoadSceneAsync (l);
 		op.priority = 15;
+		operation = op;
 	}
 
 	private void Update () {
-		float proc = Mathf.Clamp ((Time.time - time_started) / timeToLoad, 0.0f, 1.0f);
+		float proc = operation.progress;
 		loadProcentImage.fillAmount = proc;
 		loadProcentText.text = "Загрузка..." + ((int)(proc * 100.0f)) + "%";
 	}
 	
 	void Start () {
-		Invoke ("Load", timeToLoad);
-		time_started = Time.time;
+		Load ();
 	}
 	void Load () {
 		LoadLevelNow (level);
