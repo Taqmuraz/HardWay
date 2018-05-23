@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
 
+/// <summary>
+/// Для сохранения данных о состоянии персонажа
+/// </summary>
+
 [System.Serializable]
 public class ToSaveData
 {
-	public float x = 0;
-	public float y = 0;
-	public float z = 0;
+	private float x = 0;
+	private float y = 0;
+	private float z = 0;
 
 	public Vector3 position
 	{
@@ -48,6 +52,10 @@ public enum MoveType
 	Angle
 }
 
+/// <summary>
+/// Основной компонент поведения персонажа. От него наследуются StalkerAI и StalkerController
+/// </summary>
+
 public class StalkerBehaviour : MonoBehaviour {
 	public UnityEngine.AI.NavMeshAgent agent;
 	public Transform trans;
@@ -84,6 +92,10 @@ public class StalkerBehaviour : MonoBehaviour {
 
 	//
 
+	/// <summary>
+	/// Инициализация
+	/// </summary>
+
 	private void Start () {
 
 		StalkerBehaviour s = null;
@@ -109,6 +121,12 @@ public class StalkerBehaviour : MonoBehaviour {
 		Destroy (this);
 	}
 
+	/// <summary>
+	/// Проигрывание звука
+	/// </summary>
+	/// <param name="clip">Clip.</param>
+	/// <param name="volume">Volume.</param>
+
 	public void PlaySound (AudioClip clip, float volume) {
 		if (!audioBeh) {
 			Transform head = anims.GetBoneTransform (HumanBodyBones.Head);
@@ -121,14 +139,17 @@ public class StalkerBehaviour : MonoBehaviour {
 		}
 		audioBeh.spatialBlend = 1;
 		audioBeh.volume = volume;
-		audioBeh.clip = clip;
-		audioBeh.Play ();
+		audioBeh.PlayOneShot (clip);
 	}
 
 
 	public void OnDestroy () {
 		behaviours.Remove (this);
 	}
+
+	/// <summary>
+	/// Инициализация сталкера исходя из сохраненных данных
+	/// </summary>
 
 	public void StalkerStart () {
 		agent = GetComponent<NavMeshAgent> ();
@@ -172,9 +193,7 @@ public class StalkerBehaviour : MonoBehaviour {
 
 	public void StalkerSinhro () {
 		Vector3 pos = trans.position;
-		to_save_data.x = pos.x;
-		to_save_data.y = pos.y;
-		to_save_data.z = pos.z;
+		to_save_data.position = pos;
 		to_save_data.euler_x = trans.eulerAngles.y;
 		if (standing) {
 			agent.speed = 0;
@@ -405,15 +424,32 @@ public class StalkerBehaviour : MonoBehaviour {
 		anims.SetIKPosition (AvatarIKGoal.RightFoot, r_leg);
 	}
 	public float walkQ = 1;
+	/// <summary>
+	/// Функция движения к объекту
+	/// </summary>
+	/// <param name="to">To.</param>
 	public void MoveTo (Vector3 to) {
 		MoveAtDirection (to - trans.position);
 	}
+	/// <summary>
+	/// Возращает возможность атаки Who на At. Пока что возвращает true, так как атаки еще не введены
+	/// </summary>
+	/// <returns><c>true</c>, if attack was mayed, <c>false</c> otherwise.</returns>
+	/// <param name="who">Who.</param>
+	/// <param name="at">At.</param>
 	public bool MayAttack (StalkerBehaviour who, StalkerBehaviour at) {
 		return true;
 	}
+	/// <summary>
+	/// Будет возвращаться урон исходя из параметров текущего оружия и партронов. Пока что 10, так как не введена боевая система
+	/// </summary>
+	/// <returns>The damage.</returns>
 	public int GetDamage () {
 		return 10;
 	}
+	/// <summary>
+	/// Смерть. Устаревшая базовая версия, будет обновляться
+	/// </summary>
 	public void Die () {
 		// animate death
 		Destroy (agent);
@@ -422,10 +458,18 @@ public class StalkerBehaviour : MonoBehaviour {
 	public Transform FindCoverPoint () {
 		return null;
 	}
+	/// <summary>
+	/// Используется для движения в определенном направлении
+	/// </summary>
+	/// <param name="direction">Direction.</param>
 	public void MoveAtDirection (Vector3 direction) {
 		direction.Normalize ();
 		agent.SetDestination (simplePosition + direction);
 	}
+	/// <summary>
+	/// Позиция с учетом положения ног персонажа
+	/// </summary>
+	/// <value>The simple position.</value>
 	private Vector3 simplePosition
 	{
 		get {
@@ -453,6 +497,10 @@ public class StalkerBehaviour : MonoBehaviour {
 			// attack
 		}
 	}
+	/// <summary>
+	/// Функция получения урона
+	/// </summary>
+	/// <param name="damage">Damage.</param>
 	public void ApplyDamage (float damage) {
 		to_save_data.inventory.health -= damage;
 		to_save_data.inventory.energy -= damage / 4;

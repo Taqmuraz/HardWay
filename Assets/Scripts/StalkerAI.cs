@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Компонент искуственного интеллекта
+/// </summary>
+
 public class StalkerAI : StalkerBehaviour {
 	public void Start () {
 		StalkerStart ();

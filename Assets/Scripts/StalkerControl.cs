@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Компонент контроля игрока над сталкером
+/// </summary>
+
 public class StalkerControl : StalkerBehaviour {
 
 	private Transform cam_trans;

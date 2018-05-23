@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TextSetter : MonoBehaviour
+/// <summary>
+/// Используется для 
+/// </summary>
+
+public class TextSetter : MonoBehaviour, IPointerClickHandler
 {
 	public ButtonScript.ToDo onEnd = delegate {
 		return;
@@ -12,6 +17,10 @@ public class TextSetter : MonoBehaviour
 	public string rawData;
 	private RectTransform parent;
 	public float time;
+
+	public void OnPointerClick (PointerEventData data) {
+		End ();
+	}
 
 	public void Init () {
 		parent = (RectTransform)textObject.rectTransform.parent;
@@ -41,12 +50,14 @@ public class TextSetter : MonoBehaviour
 	}
 
 	public static void SetText (Text obj, string text) {
-		RectTransform trans = obj.rectTransform;
-		TextGenerationSettings s = obj.GetGenerationSettings (trans.rect.size);
-		float slotSize = obj.cachedTextGenerator.GetPreferredHeight(text, s);
-		trans.SetSizeWithCurrentAnchors (RectTransform.Axis.Vertical, slotSize);
-		obj.text = text;
+		SetText (obj, obj.GetComponent<RectTransform> (), text);
 	}
+	/// <summary>
+	/// Используется для установки параметров текста в соответствии с TextGenerator
+	/// </summary>
+	/// <param name="obj">Object.</param>
+	/// <param name="parent">Parent.</param>
+	/// <param name="text">Text.</param>
 	public static void SetText (Text obj, RectTransform parent, string text) {
 		RectTransform trans = obj.GetComponent<RectTransform> ();
 		TextGenerationSettings s = obj.GetGenerationSettings (trans.rect.size);

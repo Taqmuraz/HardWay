@@ -3,6 +3,10 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Компонент для загрузки игры из почти пустой сцены
+/// </summary>
+
 public class SpaceScene : MonoBehaviour {
 	
 	public static int level = 0;

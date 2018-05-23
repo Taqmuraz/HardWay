@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// Слот для зранения данных о материалах на сцене. Экспериментальный прототип, будет обновляться
+/// </summary>
+
 [System.Serializable]
-public class RenderSlot
+public struct RenderSlot
 {
 	public Material material;
 	public TexturesData main;
 	public TexturesData transparent;
 
-	public RenderSlot () {
-		main = new TexturesData ();
-		transparent = new TexturesData ();
-	}
 	public RenderSlot (Material mat) {
 		material = mat;
 		main = new TexturesData (material.mainTexture, material.GetTexture("_BumpMap"), material.color);
@@ -48,7 +48,9 @@ public enum RenderMode
 	main,
 	transparent
 }
-
+/// <summary>
+/// Нужен для осуществления перехода из одного режима отображения игры в другой
+/// </summary>
 public class RenderHolder : MonoBehaviour
 {
 	public List<RenderSlot> rendSlots = new List<RenderSlot>();

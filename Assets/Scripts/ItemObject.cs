@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Нужен для сохранения предметов лута на локации. Хранит в себе позицию лута и ID хранящегося предмета
+/// </summary>
+
 [System.Serializable]
 public class ItemSavable
 {
@@ -24,7 +28,9 @@ public class ItemSavable
 
 	public int id = 0;
 }
-
+/// <summary>
+/// MonoBehaviour компонент для хранения данных о выброшеннои предмете
+/// </summary>
 public class ItemObject : MonoBehaviour {
 	public ItemSavable sav;
 	public Transform trans;

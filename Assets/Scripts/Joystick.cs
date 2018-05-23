@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Компонент джойстика
+/// </summary>
+
 public class Joystick : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
 	public void OnBeginDrag (PointerEventData data) {

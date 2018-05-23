@@ -4,15 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
+/// <summary>
+/// Хранит аудио и текстовый ресурс реплики, 
+/// </summary>
+
 [System.Serializable]
 public struct DialogReplic
 {
-	public AudioClip sourceClip { get; set; }
-	public string sourceText { get; set; }
+	public AudioClip sourceClip { get; private set; }
+	public string sourceText { get; private set; }
 
 	public string actor;
 	public string key;
 	public string shortText;
+
+	/// <summary>
+	/// Словарь громкости голосов актеров. Актуален из-за разности в громкости записей разных актеров
+	/// </summary>
+	/// <value>The character voices.</value>
 
 	public static Dictionary<string, float> characterVoices
 	{
@@ -28,7 +37,6 @@ public struct DialogReplic
 	}
 
 	public static string LoadTextFromResources (string actor, string key) {
-		//Debug.Log ("Dialogs/Texts/" + actor + "/" + key);
 		return Resources.Load<TextAsset> ("Dialogs/Texts/" + actor + "/" + key).text;
 	}
 	public static AudioClip LoadClipFromResources (string actor, string key) {
@@ -53,6 +61,9 @@ public struct DialogReplic
 		sourceText = LoadTextFromResources (_actor, _key);
 	}
 }
+/// <summary>
+/// Хранит в себе информацию о реплике и переходе в следующий нод. Используется для хранения данных для отображения нода.
+/// </summary>
 [System.Serializable]
 public struct DialogButton
 {
@@ -64,7 +75,9 @@ public struct DialogButton
 		nextNodeIndex = _next;
 	}
 }
-
+/// <summary>
+/// Содержит реплику НПС, с которым говорит игрок и варианты ответа на нее
+/// </summary>
 [System.Serializable]
 public struct DialogNode
 {
@@ -77,6 +90,10 @@ public struct DialogNode
 	}
 }
 
+/// <summary>
+/// Сама диалоговая система
+/// </summary>
+
 [System.Serializable]
 public class DialogSystem
 {
@@ -84,7 +101,10 @@ public class DialogSystem
 	public DialogSystem (params DialogNode[] nds) {
 		nodes = nds;
 	}
-
+	/// <summary>
+	/// Создание диалога с особистом
+	/// </summary>
+	/// <value>The osobist3.</value>
 	public static DialogSystem osobist3
 	{
 		get {
@@ -185,10 +205,18 @@ public class DialogSystem
 		}
 	}
 
+	/// <summary>
+	/// Ноды системы
+	/// </summary>
 
 
 	public DialogNode[] nodes;
 	public int currentDialogIndex;
+
+	/// <summary>
+	/// Текущий нод
+	/// </summary>
+	/// <value>The current node.</value>
 
 	public DialogNode currentNode
 	{
@@ -197,6 +225,12 @@ public class DialogSystem
 		}
 	}
 
+	/// <summary>
+	/// Поиск в словаре голоса актера
+	/// </summary>
+	/// <returns>The voice.</returns>
+	/// <param name="actor">Actor.</param>
+
 	public static float GetVoice (string actor) {
 		float v = 1;
 		if (DialogReplic.characterVoices.ContainsKey(actor)) {
@@ -204,6 +238,10 @@ public class DialogSystem
 		}
 		return v;
 	}
+
+	/// <summary>
+	/// Произношение реплики игроком
+	/// </summary>
 
 	public void SayReplic (DialogButton button, StalkerBehaviour stalker, RectTransform bp, Text actor, GameObject bpo) {
 		StalkerControl.player.PlaySound (button.replic.sourceClip, GetVoice(button.replic.actor));
@@ -220,15 +258,37 @@ public class DialogSystem
 		});
 	}
 
+	/// <summary>
+	/// Персонаж, с которым идет диалог
+	/// </summary>
+
 	public StalkerBehaviour dialogCharacter;
+
+	/// <summary>
+	/// Закрытие диалога
+	/// </summary>
 
 	public void CloseDialog () {
 		Menu.menu.menu_state = MenuState.Runtime;
 		Menu.menu.currentDialogSystem = null;
 	}
+
+	/// <summary>
+	/// Инициализация диалога. Почему для одной строки создан метод? Смотрим в будущее, он еще пригодится
+	/// </summary>
+
 	public void StartDialog () {
 		Menu.menu.menu_state = MenuState.Dialog;
 	}
+
+	/// <summary>
+	/// Установка нода и произношение реплики НПС
+	/// </summary>
+	/// <param name="node">Node.</param>
+	/// <param name="buttonsParent">Buttons parent.</param>
+	/// <param name="actor">Actor.</param>
+	/// <param name="stalker">Stalker.</param>
+	/// <param name="bpo">Bpo.</param>
 
 	public void SetNodeCorner (DialogNode node, RectTransform buttonsParent, Text actor, StalkerBehaviour stalker, GameObject bpo) {
 		AudioClip c = node.actorReplic.sourceClip;
@@ -239,6 +299,15 @@ public class DialogSystem
 		});
 		stalker.PlaySound (c, GetVoice (node.actorReplic.actor));
 	}
+
+	/// <summary>
+	/// Подготовкеа нода. Отображение и настройка кнопок
+	/// </summary>
+	/// <param name="node">Node.</param>
+	/// <param name="buttonsParent">Buttons parent.</param>
+	/// <param name="actor">Actor.</param>
+	/// <param name="stalker">Stalker.</param>
+	/// <param name="bpo">Bpo.</param>
 
 	public void PrepareNode (DialogNode node, RectTransform buttonsParent, Text actor, StalkerBehaviour stalker, GameObject bpo) {
 

@@ -7,12 +7,20 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
+/// <summary>
+/// Хранит информацию о состоянии группы
+/// </summary>
+
 [System.Serializable]
-public class GroupClass
+public struct GroupClass
 {
-	public ToSaveData[] stalkers = new ToSaveData[0];
+	public ToSaveData[] stalkers;
 	public ToSaveData.Group group;
 }
+
+/// <summary>
+///Храниит все сохраняемые данные о прогрессе игры
+/// </summary>
 
 [System.Serializable]
 public class Game
@@ -71,7 +79,9 @@ public class Game
 		return current;
 	}
 }
-
+/// <summary>
+/// Окно меню
+/// </summary>
 [System.Serializable]
 public enum MenuState
 {
@@ -83,6 +93,9 @@ public enum MenuState
 	Inventory,
 	Dialog
 }
+/// <summary>
+/// Хранит в себе настройки. Содержит методы для их созранения/загрузки
+/// </summary>
 [System.Serializable]
 public class Settings
 {
@@ -118,7 +131,9 @@ public class Settings
 		}
 	}
 }
-
+/// <summary>
+/// Меню. Как игровое, так и главное
+/// </summary>
 public class Menu : MonoBehaviour {
 
 	public MenuState menu_state
@@ -249,6 +264,7 @@ public class Menu : MonoBehaviour {
 			dialogEnterButton.toDo = new ButtonScript.ToDo (delegate() {
 				ToDialogWithNearest(true);
 			});
+			menu_state = MenuState.Runtime;
 		}
 	}
 	public string MemoryUsed () {
@@ -309,7 +325,9 @@ public class Menu : MonoBehaviour {
 			
 		}
 	}
-
+	/// <summary>
+	/// Сохраняет изменения в настройках
+	/// </summary>
 	public void Apply () {
 		Settings c = new Settings ();
 		c.audio_volume = audio_volume.value;
@@ -323,6 +341,9 @@ public class Menu : MonoBehaviour {
 
 		Settings.Save ();
 	}
+	/// <summary>
+	/// Устанавливает значения ползунков в соответствии с сохраненными настройками
+	/// </summary>
 	public void GetFromSaved () {
 		Settings.Load ();
 		Settings c = Settings.current;
@@ -349,23 +370,42 @@ public class Menu : MonoBehaviour {
 	public void ToSettings () {
 		menu_state = MenuState.Sets;
 	}
+	/// <summary>
+	/// Начинает новую игру
+	/// </summary>
+	/// <param name="group_int">Group int.</param>
 	public void StartNewGame (int group_int) {
 		Game.gt = Game.GameType.NewGame;
 		SpaceScene.LoadLevel (2);
 	}
+	/// <summary>
+	/// Загружает сохраненную игру
+	/// </summary>
+	/// <param name="index">Index.</param>
 	public void LoadSavedGame (int index) {
 		Game.gt = Game.GameType.LoadedGame;
 		Game.buffer = Game.Load (Game.names[index]);
 		SpaceScene.LoadLevel (2);
 	}
+	/// <summary>
+	/// Загружает меню
+	/// </summary>
 	public void LoadMenu () {
 		SpaceScene.LoadLevel (0);
 	}
 	public void ToRuntime () {
 		menu_state = MenuState.Runtime;
 	}
-
+	/// <summary>
+	/// Текущая диалоговая система
+	/// </summary>
 	public DialogSystem currentDialogSystem;
+
+	/// <summary>
+	/// Вступить в диалог с ближайшим персонажем
+	/// </summary>
+	/// <returns><c>true</c>, if dialog with nearest was toed, <c>false</c> otherwise.</returns>
+	/// <param name="enterToDialog">If set to <c>true</c> enter to dialog.</param>
 
 	public bool ToDialogWithNearest (bool enterToDialog) {
 		StalkerBehaviour nearest = null;
@@ -381,6 +421,11 @@ public class Menu : MonoBehaviour {
 		}
 		return nearest != null;
 	}
+
+	/// <summary>
+	/// Создание самого диалогового окна. Пока что в базе данных один диалог, поэтому switch|case, но будьте готовы к переменам
+	/// </summary>
+	/// <param name="with">With.</param>
 
 	public void ToDialog (StalkerBehaviour with) {
 		if (with.to_save_data.dialog.Length > 0) {
@@ -402,6 +447,9 @@ public class Menu : MonoBehaviour {
 			}
 		}
 	}
+	/// <summary>
+	/// Выход из приложения
+	/// </summary>
 	public void Quit () {
 		Application.Quit ();
 	}

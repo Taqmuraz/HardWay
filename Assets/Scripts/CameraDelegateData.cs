@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Компонент, присутствующий на камере. Нужен для хранения делегата toDo и выполнения его в OnPreRender
+/// </summary>
 [RequireComponent(typeof (Camera))]
 public class CameraDelegateData : MonoBehaviour
 {

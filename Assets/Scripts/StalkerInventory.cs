@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using System.Linq;
+/// <summary>
+/// Данные об инвентаре и динамичных параметрах персонажа, связанных с ним.
+/// </summary>
 
 [System.Serializable]
 public class Inventory
@@ -47,10 +51,12 @@ public class Inventory
 		}
 	}
 
+	public static InventorySlot EmptySlot = new InventorySlot (-1, 0, 0);
+
 	public InventorySlot weapon_0
 	{
 		get {
-			InventorySlot slot = new InventorySlot(-1, 0, 0);
+			InventorySlot slot = EmptySlot;
 			int ind = weaponIndex;
 			InventorySlot n = GetByUnicIndex (ind);
 			if (n.equipped) {
@@ -62,7 +68,7 @@ public class Inventory
 	public InventorySlot weapon_pistol
 	{
 		get {
-			InventorySlot slot = new InventorySlot(-1, 0, 0);
+			InventorySlot slot = EmptySlot;
 			int ind = pistolIndex;
 			InventorySlot n = GetByUnicIndex (ind);
 			if (n.equipped) {
@@ -74,7 +80,7 @@ public class Inventory
 	public InventorySlot armor
 	{
 		get {
-			InventorySlot slot = new InventorySlot(-1, 0, 0);
+			InventorySlot slot = EmptySlot;
 			int ind = armorIndex;
 			InventorySlot n = GetByUnicIndex (ind);
 			if (n.equipped) {
@@ -86,7 +92,7 @@ public class Inventory
 	public InventorySlot helm
 	{
 		get {
-			InventorySlot slot = new InventorySlot(-1, 0, 0);
+			InventorySlot slot = EmptySlot;
 			int ind = helmIndex;
 			InventorySlot n = GetByUnicIndex (ind);
 			if (n.equipped) {
@@ -98,7 +104,7 @@ public class Inventory
 	public InventorySlot legs
 	{
 		get {
-			InventorySlot slot = new InventorySlot(-1, 0, 0);
+			InventorySlot slot = EmptySlot;
 			int ind = legsIndex;
 			InventorySlot n = GetByUnicIndex (ind);
 			if (n.equipped) {
@@ -110,7 +116,7 @@ public class Inventory
 	public InventorySlot foots
 	{
 		get {
-			InventorySlot slot = new InventorySlot(-1, 0, 0);
+			InventorySlot slot = EmptySlot;
 			int ind = footsIndex;
 			InventorySlot n = GetByUnicIndex (ind);
 			if (n.equipped) {
@@ -122,7 +128,7 @@ public class Inventory
 	public InventorySlot mask
 	{
 		get {
-			InventorySlot slot = new InventorySlot(-1, 0, 0);
+			InventorySlot slot = EmptySlot;
 			int ind = maskIndex;
 			InventorySlot n = GetByUnicIndex (ind);
 			if (n.equipped) {
@@ -134,7 +140,7 @@ public class Inventory
 	public InventorySlot bag
 	{
 		get {
-			InventorySlot slot = new InventorySlot(-1, 0, 0);
+			InventorySlot slot = EmptySlot;
 			int ind = bagIndex;
 			InventorySlot n = GetByUnicIndex (ind);
 			if (n.equipped) {
@@ -146,7 +152,7 @@ public class Inventory
 	public InventorySlot melee
 	{
 		get {
-			InventorySlot slot = new InventorySlot(-1, 0, 0);
+			InventorySlot slot = EmptySlot;
 			int ind = meleeIndex;
 			InventorySlot n = GetByUnicIndex (ind);
 			if (n.equipped) {
@@ -158,7 +164,7 @@ public class Inventory
 	public InventorySlot miniBag
 	{
 		get {
-			InventorySlot slot = new InventorySlot(-1, 0, 0);
+			InventorySlot slot = EmptySlot;
 			int ind = miniBagIndex;
 			InventorySlot n = GetByUnicIndex (ind);
 			if (n.equipped) {
@@ -170,7 +176,7 @@ public class Inventory
 	public InventorySlot artefact
 	{
 		get {
-			InventorySlot slot = new InventorySlot(-1, 0, 0);
+			InventorySlot slot = EmptySlot;
 			int ind = artefactIndex;
 			InventorySlot n = GetByUnicIndex (ind);
 			if (n.equipped) {
@@ -179,14 +185,13 @@ public class Inventory
 			return slot;
 		}
 	}
+	/// <summary>
+	/// Для сохранения ссылки к объекту после перезагрузки игры используется уникальный индекс
+	/// </summary>
+	/// <returns>The by unic index.</returns>
+	/// <param name="index">Index.</param>
 	public InventorySlot GetByUnicIndex (int index) {
-		InventorySlot slot = new InventorySlot (-1, 0, 0);
-		for (int i = 0; i < slots.Length; i++) {
-			if (slots[i].index == index) {
-				slot = slots [i];
-				break;
-			}
-		}
+		InventorySlot slot = slots.FirstOrDefault (((InventorySlot arg) => arg.index == index));
 		return slot;
 	}
 
