@@ -243,8 +243,8 @@ public class DialogSystem
 	/// Произношение реплики игроком
 	/// </summary>
 
-	public void SayReplic (DialogButton button, StalkerBehaviour stalker, RectTransform bp, Text actor, GameObject bpo) {
-		StalkerControl.player.PlaySound (button.replic.sourceClip, GetVoice(button.replic.actor));
+	public void SayReplic (DialogButton button, AliveBehaviour stalker, RectTransform bp, Text actor, GameObject bpo) {
+		Stalker.player.PlaySound (button.replic.sourceClip, GetVoice(button.replic.actor));
 
 		AudioClip c = button.replic.sourceClip;
 		bpo.SetActive (false);
@@ -262,15 +262,15 @@ public class DialogSystem
 	/// Персонаж, с которым идет диалог
 	/// </summary>
 
-	public StalkerBehaviour dialogCharacter;
+	public AliveBehaviour dialogCharacter;
 
 	/// <summary>
 	/// Закрытие диалога
 	/// </summary>
 
 	public void CloseDialog () {
-		Menu.menu.menu_state = MenuState.Runtime;
-		Menu.menu.currentDialogSystem = null;
+		//Menu.menu.menu_state = MenuState.Runtime;
+		//Menu.menu.currentDialogSystem = null;
 	}
 
 	/// <summary>
@@ -278,7 +278,7 @@ public class DialogSystem
 	/// </summary>
 
 	public void StartDialog () {
-		Menu.menu.menu_state = MenuState.Dialog;
+		//Menu.menu.menu_state = MenuState.Dialog;
 	}
 
 	/// <summary>
@@ -290,7 +290,7 @@ public class DialogSystem
 	/// <param name="stalker">Stalker.</param>
 	/// <param name="bpo">Bpo.</param>
 
-	public void SetNodeCorner (DialogNode node, RectTransform buttonsParent, Text actor, StalkerBehaviour stalker, GameObject bpo) {
+	public void SetNodeCorner (DialogNode node, RectTransform buttonsParent, Text actor, AliveBehaviour stalker, GameObject bpo) {
 		AudioClip c = node.actorReplic.sourceClip;
 		bpo.SetActive (false);
 		dialogCharacter = stalker;
@@ -309,7 +309,7 @@ public class DialogSystem
 	/// <param name="stalker">Stalker.</param>
 	/// <param name="bpo">Bpo.</param>
 
-	public void PrepareNode (DialogNode node, RectTransform buttonsParent, Text actor, StalkerBehaviour stalker, GameObject bpo) {
+	public void PrepareNode (DialogNode node, RectTransform buttonsParent, Text actor, AliveBehaviour stalker, GameObject bpo) {
 
 		bpo.SetActive (true);
 

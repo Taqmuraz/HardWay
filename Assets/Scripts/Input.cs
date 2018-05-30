@@ -11,10 +11,8 @@ public class InputData
 	public static Vector2 joystick
 	{
 		get {
-			if (Menu.menu.menu_state != MenuState.Runtime) {
-				joyGetter = Vector2.zero;
-			}
-			return joyGetter;
+			Vector2 win = new Vector2(Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
+			return win.magnitude > joyGetter.magnitude ? win : joyGetter;
 		}
 		set {
 			joyGetter = value;
